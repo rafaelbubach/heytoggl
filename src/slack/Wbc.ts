@@ -1,5 +1,5 @@
-import * as log from 'bog';
-import config from '../config';
+import * as log from "bog";
+import config from "../config";
 
 interface WbcParsed {
     id: string;
@@ -19,7 +19,7 @@ class Wbc {
         const users: WbcParsed[] = [];
         const bots: WbcParsed[] = [];
 
-        log.info('Fetching slack users via wbc');
+        log.info("Fetching slack users via wbc");
         const result = await this.wbc.users.list();
         result.members.forEach((x: any) => {
             // reassign correct array to arr
@@ -27,7 +27,7 @@ class Wbc {
             arr.push({
                 id: x.id,
                 name: x.is_bot ? x.name : x.real_name,
-                memberType: x.is_restricted ? 'guest' : 'member',
+                memberType: x.is_restricted ? "guest" : "member",
                 avatar: x.profile.image_48,
             });
         });
@@ -39,7 +39,7 @@ class Wbc {
             text,
             channel: username,
             username: config.slack.bot_name,
-            icon_emoji: ':burrito:',
+            icon_emoji: ":burrito:",
         });
         if (res.ok) {
             log.info(`Notified user ${username}`);

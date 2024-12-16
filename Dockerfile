@@ -1,5 +1,5 @@
 
-FROM node:erbium
+FROM node:erbium-bullseye
 
 RUN apt-get update && apt-get install -y
 
